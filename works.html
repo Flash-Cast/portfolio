@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Works | Ryuta Tsukui</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="site-title"><a href="index.html">Portfolio</a></h1>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="works_hero fade-in">
+    <h1>My Works</h1>
+    <div class="container">
+      <h2>実践は最大の学習</h2>
+      <p>課題発見と行動、思いついたらやってみる</p>
+    </div>
+  </section>
+
+  <section class="works fade-in">
+    <div class="works-grid">
+      <div class="work-card" data-title="生体の箱庭"
+           data-desc="大学の学科掲示板を作成。利用者はまもなく100名を突破するところ。現在も開発継続中"
+           data-img="assets/img/seitai.png"
+           data-link="https://seitai-board.com">
+        <img src="assets/img/seitai.png" alt="生体の箱庭">
+        <h2>生体の箱庭</h2>
+        <p>大学の学科掲示板を作成。</p>
+        <button class="open-modal">詳しく見る</button>
+      </div>
+
+      <div class="work-card" data-title="塾講師向けnote"
+           data-desc="塾講師として勤務する人たちに向けた、自身の考えやノウハウを発信する場として活用。おおむね週一で記事を投稿しており、今後も継続していく。"
+           data-img="assets/img/note.webp"
+           data-link="https://note.com/redshift_creater/n/n464c0749e4df">
+        <img src="assets/img/note.webp" alt="note">
+        <h2>塾講師向けnote</h2>
+        <p>塾講師向けのノウハウ発信。</p>
+        <button class="open-modal">詳しく見る</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <img id="modal-img" src="" alt="">
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+      <a id="modal-link" href="" target="_blank" class="works_btn">サイトへ</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Ryuta Tsukui. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

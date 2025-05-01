@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Ryuta Tsukui</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ヘッダー・ナビゲーション -->
+  <header>
+    <div class="container">
+      <h1 class="site-title"><a href="index.html">Portfolio</a></h1>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="works.html">Works</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+
+  <!-- Contactセクション -->
+
+  <section class="contact_hero fade-in">
+    <h1>Contact</h1>
+    <div class="container">
+      <h2>Looking for Job</h2>
+      <p>力となれる場所を探しています。</p>
+    </div>
+  </section>
+
+  <section class="contact fade-in">
+    <p>お問い合わせは下記のフォームまたはメールでお願いします。</p>
+
+    <!-- メール用リンク -->
+    <div class="contact-info">
+      <h2>Email</h2>
+      <p><a href="mailto:youremail@example.com">tsukui.r@outlook.jp</a></p>
+    </div>
+
+    <!-- 簡易フォーム -->
+    <div class="contact-form">
+      <h2>Contact Form</h2>
+      <form action="submit_form.php" method="post">
+        <label for="purpose">Purpose</label>
+        <select name="purpose" class="purpose" required>
+        <option value="">⇩選択してください</option>
+        <option value="first">質問</option>
+        <option value="second">採用</option>
+        <option value="third">依頼</option>
+        <option value="forth">その他</option>
+        </select>
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button class="contact_btn"  type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+</body>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Ryuta Tsukui. All rights reserved.</p>
+  </div>
+</footer>
+</html>
