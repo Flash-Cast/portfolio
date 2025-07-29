@@ -1,6 +1,26 @@
 
 console.log("JS読み込まれた！");
 // assets/js/main.js
+// ページの読み込み完了後に関数を実行
+window.addEventListener('load', function() {
+  
+  // 1. 待機画面を非表示にする
+  const loader = document.getElementById('loader');
+  if (loader) {
+    loader.classList.add('hidden');
+  }
+
+  // 2. 本文をフェードインさせる
+  document.body.classList.add('loaded');
+
+  // 3. AOS（スクロールアニメーション）を初期化する
+  AOS.init({
+    duration: 800, // アニメーションの時間（ミリ秒）
+    once: true,    // アニメーションを1回だけ実行
+    offset: 100,   // アニメーションが始まるトリガー位置（px）
+  });
+
+});
 
 const fadeEls = document.querySelectorAll('.fade-in');
 
@@ -63,4 +83,12 @@ modal.addEventListener('click', (e) => {
     modal.classList.remove('show');
     modal.classList.add('hidden');
   }
+});
+
+
+// strengths セクションの自己PR展開
+document.querySelectorAll('.strength-card').forEach(card => {
+  card.addEventListener('click', () => {
+    card.classList.toggle('active');
+  });
 });

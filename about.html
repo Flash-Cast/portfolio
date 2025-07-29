@@ -4,14 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | Ryuta Tsukui</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <!-- ヘッダー・ナビゲーション -->
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+
   <header>
     <div class="container">
-      <h1 class="site-title"><a href="index.html">Portfolio</a></h1>
+      <h1 class="site-title"><a href="index.html">Ryuta Tsukui</a></h1>
       <nav class="site-nav">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -22,74 +26,57 @@
       </nav>
     </div>
   </header>
-  
 
-  <!-- Aboutセクション -->
+  <main>
+    <section class="page_hero">
+      <div class="container" data-aos="zoom-in">
+        <h1>About Me</h1>
+        
+      </div>
+    </section>
 
-  <section class="about_hero fade-in">
-    <h1>About Me</h1>
+    <section class="about content-section" data-aos="fade-up" data-aos-easing="ease-out-back">
+      <div class="container">
+        <p class="intro">
+          津久井 隆大と申します。<br>
+          趣味でweb制作を学んでいます。<br>
+          
+        </p>
+        <div class="about-grid">
+          <div class="about-item" data-aos="fade-up" data-aos-delay="100" >
+            <h2>Skills</h2>
+            <ul>
+              <li>HTML / CSS / JavaScript</li>
+              <li>Python / Django</li>
+              <li>Presentation / Teaching</li>
+            </ul>
+            <h3>Qualifications</h3>
+            <ul>
+              <li>実用英語技能検定2級</li>
+              <li>ITパスポート</li>
+            </ul>
+          </div>
+          <div class="about-item" data-aos="fade-up" data-aos-delay="200">
+            <h2>History</h2>
+            <ul>
+              <li>2024年 - 国立大学法人埼玉大学 理学部生体制御学科に入学</li>
+              <li>2023年 - 日本生物学オリンピック予選優秀賞</li>
+              <li>2022年 - 第12回科学の甲子園埼玉県大会出場 筆記の部3位</li>
+              <li>2021年 - 埼玉県立所沢北高等学校 理数科に入学</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
     <div class="container">
-      <h2>必要とされる人材</h2>
-      <p>求められる以上の成果を出す</p>
-      <a href="promotion.html" class="about_btn">Self-PR</a>
+      <p>&copy; 2025 Ryuta Tsukui. All rights reserved.</p>
     </div>
-  </section>
-  <section class="about">
-    
-    <p class="intro fade-in">
-      津久井 隆大と申します。<br>
-      web制作を行いながら各種技術を学んでいます。<br>特にPythonを用いた制作が現在の主要な活動です。<br>
-      加えて、noteにて塾講師向けの記事も執筆しています。
-    </p>
-
-    <div class="skills fade-in">
-      <h2>Skills</h2>
-      <ul>
-        <li>HTML / CSS / JavaScript</li>
-        <li>Python / Django</li>
-        <li>presentation / teaching</li>
-      </ul>
-      <h3>Qualifications</h3>
-      <ul>
-        <li>実用英語技能検定2級</li>
-        <li>ITパスポート</li>
-      </ul>
-    </div>
-
-    <div class="timeline fade-in">
-      <h2>Career</h2>
-      <ul>
-        <li>2024年 - 株式会社マグマにて時間講師採用</li>
-        <li>2025年 - 株式会社創英コーポレーションにて講師採用</li>
-      </ul>
-    </div>
-
-    <div class="lifehistory fade-in">
-        <h2>History</h2>
-        <ul>
-            <li>2005年 - 出生</li>
-            <li>2021年 - 埼玉県立所沢北高等学校理数科に入学</li>
-            <li>2022年 - 第12回科学の甲子園埼玉県大会出場,筆記の部3位</li>
-            <li>2023年 - 日本生物学オリンピック予選優秀賞</li>
-            <li>2024年 - 日本地理オリンピック予選出場</li>
-            <li>2024年 - 国立大学法人埼玉大学理学部生体制御学科に入学</li>
-        </ul>
-    </div>
-
-    <div class="learning fade-in">
-      <h2>Major</h2>
-      <ul>
-        <li>生物学 - 生理学,内分泌学,神経生理学</li>
-      </ul>
-
-    </div>
-  </section>
-
+  </footer>
+  
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
-
-<footer>
-  <div class="container">
-    <p>&copy; 2025 Ryuta Tsukui. All rights reserved.</p>
-  </div>
-</footer>
 </html>
