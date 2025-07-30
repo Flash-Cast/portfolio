@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邂逅</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #000; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <canvas id="artCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('artCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const PARENT_RADIUS = 20;
+        const CHILD_RADIUS = PARENT_RADIUS / 4;
+        const PARENT_COLOR = 'rgba(0, 255, 255, 0.8)';
+        const CHILD_COLOR = 'rgba(255, 255, 0, 0.8)';
+        const SPAWN_DELAY = 200; 
+
+        let circles = [];
+
+        function getDistance(x1, y1, x2, y2) {
+            return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+        }
+
+        class Circle {
+            constructor(x, y, radius, type) {
+                this.x = x; this.y = y; this.radius = radius; this.type = type;
+                this.color = this.type === 'parent' ? PARENT_COLOR : CHILD_COLOR;
+                this.dx = (Math.random() - 0.5) * 4;
+                this.dy = (Math.random() - 0.5) * 4;
+                this.isMarkedForDeletion = false;
+
+                //  無敵時間（グレースピリオド）を追加
+                // 子の円にだけ、30フレームの無敵時間を与える
+                this.gracePeriod = this.type === 'child' ? 30 : 0;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            update() {
+                // 無敵時間を1フレームずつ減らす
+                if (this.gracePeriod > 0) {
+                    this.gracePeriod--;
+                }
+                if (this.x + this.radius > canvas.width || this.x - this.radius < 0) this.dx = -this.dx;
+                if (this.y + this.radius > canvas.height || this.y - this.radius < 0) this.dy = -this.dy;
+                this.x += this.dx;
+                this.y += this.dy;
+            }
+        }
+
+        canvas.addEventListener('click', (event) => {
+            circles.push(new Circle(event.clientX, event.clientY, PARENT_RADIUS, 'parent'));
+        });
+
+        function handleCollisions() {
+            for (let i = 0; i < circles.length; i++) {
+                for (let j = i + 1; j < circles.length; j++) {
+                    const c1 = circles[i]; const c2 = circles[j];
+                    if (c1.isMarkedForDeletion || c2.isMarkedForDeletion) continue;
+
+                    // 無敵時間中は衝突判定をスキップ
+                    if (c1.gracePeriod > 0 || c2.gracePeriod > 0) continue;
+
+                    const distance = getDistance(c1.x, c1.y, c2.x, c2.y);
+
+                    if (distance < c1.radius + c2.radius) {
+                        if (c1.type === 'parent' && c2.type === 'parent') {
+                            c1.isMarkedForDeletion = true; c2.isMarkedForDeletion = true;
+                            const { x: x1, y: y1 } = c1; const { x: x2, y: y2 } = c2;
+                            setTimeout(() => {
+                                for (let k = 0; k < 4; k++) {
+                                    circles.push(new Circle(x1, y1, CHILD_RADIUS, 'child'));
+                                    circles.push(new Circle(x2, y2, CHILD_RADIUS, 'child'));
+                                }
+                            }, SPAWN_DELAY);
+                        } else if (c1.type === 'child' && c2.type === 'child') {
+                            c1.isMarkedForDeletion = true; c2.isMarkedForDeletion = true;
+                        } else if (c1.type !== c2.type) {
+                            if (c1.type === 'child') c1.isMarkedForDeletion = true;
+                            else c2.isMarkedForDeletion = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            handleCollisions();
+            circles = circles.filter(circle => !circle.isMarkedForDeletion);
+            circles.forEach(circle => {
+                circle.update();
+                circle.draw();
+            });
+        }
+        
+        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+        animate();
+    </script>
+</body>
+</html>
