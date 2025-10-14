@@ -80,3 +80,26 @@ document.querySelectorAll('.strength-card').forEach(card => {
     card.classList.toggle('active');
   });
 });
+
+//study.html
+// --- Study Page (Accordion) ---
+const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+accordionHeaders.forEach(header => {
+  header.addEventListener('click', () => {
+    // クリックされたヘッダーに 'active' クラスを付け外し
+    header.classList.toggle('active');
+
+    // 対応するパネルを取得
+    const panel = header.nextElementSibling;
+
+    // パネルが開いているか確認
+    if (panel.style.maxHeight) {
+      // 開いていれば閉じる
+      panel.style.maxHeight = null;
+    } else {
+      // 閉じていれば、コンテンツの高さ分だけ開く
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+});

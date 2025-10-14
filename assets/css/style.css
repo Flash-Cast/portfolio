@@ -465,3 +465,69 @@ footer {
   }
 }
 
+/*study.html*/
+/* --- Study Page (Accordion) --- */
+.accordion-item {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1rem;
+}
+
+.accordion-header {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color-dark);
+}
+
+.accordion-header:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.accordion-icon {
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--accent-color);
+  transition: transform 0.3s ease-out;
+}
+
+/* JSでactiveクラスが付いた時のアイコンの回転 */
+.accordion-header.active .accordion-icon {
+  transform: rotate(60deg);
+}
+
+.accordion-panel {
+  max-height: 0; /* JSで高さを変更して開閉 */
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+}
+
+.panel-content {
+  padding: 0 2rem 2rem 2rem; /* 開いた時の内側余白 */
+  line-height: 1.8;
+}
+
+.panel-content h3 {
+  font-size: 1.3rem;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.panel-content h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.panel-content ul {
+  padding-left: 20px;
+}
